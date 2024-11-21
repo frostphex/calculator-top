@@ -1,6 +1,9 @@
 const display = document.querySelector("#result-display");
 const buttonsContainer = document.querySelector(".buttons");
 let number1 = '';
+let number2 = '';
+let result = '';
+let operator = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   display.contentEditable = "true";
@@ -19,22 +22,57 @@ buttonsContainer.addEventListener('click', (e) => {
   }
 });
 
-function handleAction(action) {
-  if (/^\d+$/.test(Number(action))) {
+function clearDisplay() {
+  number1 = '';
+  number2 = '';
+  action = '';
+  display.textContent = '';
+}
+
+function displayNumbers(action) {
+  if (operator === '') {
     number1 += action;
     display.textContent = number1;
-  } else if (action) {
-    console.log(action);
+  } else {
+    number2 += action;
+    display.textContent = number2;
   }
+}
 
+function calculate() {
+  if (number1 !== '' && number2 !== '' && operator !== '') {
+    result = operate(+number1, +number2, operator);
+    display.textContent = result;
+    number1 = result;
+    number2 = '';
+    operator = '';
+  }
+}
+
+function handleAction(action) {
+  if (/^\d+$/.test(Number(action))) {
+    displayNumbers(action);
+  } else if (action === '=') {
+    calculate();
+  } else if (action === 'clear') {
+    clearDisplay();
+  } else {
+    if (number1 !== '') {
+      if (number2 !== '') {
+        calculate();
+      }
+      operator = action;
+      display.textContent = number1;
+    }
+  }
 }
 
 function operate(number1, number2, operator) {
   const calculate = {
-    add: number1 + number2,
-    subtract: number1 - number2,
-    multiply: number1 * number2,
-    divide: number1 / number2,
+    '+': number1 + number2,
+    '-': number1 - number2,
+    '*': number1 * number2,
+    '/': number1 / number2,
   };
 
   return calculate[operator];

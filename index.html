@@ -6,42 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
   <script src="./js/script.js" async></script>
+  <script src="https://kit.fontawesome.com/22531b0d37.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
-  <script src="https://kit.fontawesome.com/22531b0d37.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div class="container">
-    <input type="text" id="result-display">
+    <div id="result-display"></div>
     <div class="buttons">
-      <button><i class="fa-solid fa-c"></i></button> <!-- Clear -->
-      <button><i class="fa-solid fa-delete-left"></i></button> <!-- Backspace -->
-      <button><i class="fa-solid fa-circle"></i></button>
+      <button data-action="clear"><i class="fa-solid fa-c"></i></button> <!-- Clear -->
+      <button data-action="backspace"><i class="fa-solid fa-delete-left"></i></button> <!-- Backspace -->
+      <button data-action="period"><i class="fa-solid fa-circle"></i></button>
 
-      <button><i class="fa-solid fa-divide"></i></button> <!-- Divide -->
+      <button data-action="divide"><i class="fa-solid fa-divide"></i></button> <!-- Divide -->
 
-      <button><i class="fa-solid fa-9"></i></button> <!-- 9 -->
-      <button><i class="fa-solid fa-7"></i></button> <!-- 7 -->
-      <button><i class="fa-solid fa-8"></i></button> <!-- 8 -->
-      <button><i class="fa-solid fa-xmark"></i></button> <!-- Multiply -->
+      <button data-action="9"><i class="fa-solid fa-9"></i></button> <!-- 9 -->
+      <button data-action="7"><i class="fa-solid fa-7"></i></button> <!-- 7 -->
+      <button data-action="8"><i class="fa-solid fa-8"></i></button> <!-- 8 -->
+      <button data-action="multiply"><i class="fa-solid fa-xmark"></i></button> <!-- Multiply -->
 
-      <button><i class="fa-solid fa-5"></i></button> <!-- 5 -->
-      <button><i class="fa-solid fa-6"></i></button> <!-- 6 -->
-      <button><i class="fa-solid fa-4"></i></button> <!-- 4 -->
-      <button><i class="fa-solid fa-minus"></i></button> <!-- Subtract -->
+      <button data-action="5"><i class="fa-solid fa-5"></i></button> <!-- 5 -->
+      <button data-action="6"><i class="fa-solid fa-6"></i></button> <!-- 6 -->
+      <button data-action="4"><i class="fa-solid fa-4"></i></button> <!-- 4 -->
+      <button data-action="subtract"><i class="fa-solid fa-minus"></i></button> <!-- Subtract -->
 
-      <button><i class="fa-solid fa-3"></i></button> <!-- 3 -->
-      <button><i class="fa-solid fa-2"></i></button> <!-- 2 -->
-      <button><i class="fa-solid fa-1"></i></button> <!-- 1 -->
-      <button><i class="fa-solid fa-plus"></i></button> <!-- Add -->
+      <button data-action="3"><i class="fa-solid fa-3"></i></button> <!-- 3 -->
+      <button data-action="2"><i class="fa-solid fa-2"></i></button> <!-- 2 -->
+      <button data-action="1"><i class="fa-solid fa-1"></i></button> <!-- 1 -->
+      <button data-action="add"><i class="fa-solid fa-plus"></i></button> <!-- Add -->
 
-      <button><i class="fa-solid fa-0"></i></button> <!-- 0 -->
-      <button><i class="fa-solid fa-equals"></i></button> <!-- Equals -->
+      <button data-action="0"><i class="fa-solid fa-0"></i></button> <!-- 0 -->
+      <button data-action="equals"><i class="fa-solid fa-equals"></i></button> <!-- Equals -->
 
     </div>
   </div>

@@ -42,12 +42,35 @@ function displayNumbers(action) {
 function calculate() {
   if (number1 !== '' && number2 !== '' && operator !== '') {
     result = operate(+number1, +number2, operator);
+    if (typeof result === "number") {
+      result = result.toFixed(2);
+    }
+
+    if (result.length > 20) {
+      result = result.substring(0, 20) + '...';
+    }
     display.textContent = result;
     number1 = result;
     number2 = '';
     operator = '';
   }
 }
+
+function addDecimal() {
+  if (operator === '') {
+    if (number1.indexOf('.') === -1) {
+      number1 += '.';
+      // display.textContent = number1;
+    }
+  } else {
+    if (number2.indexOf('.') === -1) {
+      number2 += '.';
+      // display.textContent = number2;
+    }
+  }
+}
+
+function removeNumber() { }
 
 function handleAction(action) {
   if (/^\d+$/.test(Number(action))) {
@@ -56,6 +79,10 @@ function handleAction(action) {
     calculate();
   } else if (action === 'clear') {
     clearDisplay();
+  } else if (action === 'period') {
+    addDecimal();
+  } else if (action === 'backspace') {
+    removeNumber();
   } else {
     if (number1 !== '') {
       if (number2 !== '') {
@@ -69,11 +96,16 @@ function handleAction(action) {
 
 function operate(number1, number2, operator) {
   const calculate = {
-    '+': number1 + number2,
-    '-': number1 - number2,
-    '*': number1 * number2,
-    '/': number1 / number2,
+    '+': () => number1 + number2,
+    '-': () => number1 - number2,
+    '*': () => number1 * number2,
+    '/': () => {
+      if (number2 === 0) {
+        return "Error: Division by zero is not allowed."
+      }
+      return number1 / number2;
+    },
   };
 
-  return calculate[operator];
+  return calculate[operator]();
 }

@@ -70,7 +70,15 @@ function addDecimal() {
   }
 }
 
-function removeNumber() { }
+function removeNumber() {
+  if (operator === '') {
+    number1 = number1.slice(0, -1);
+    display.textContent = number1 || '0';
+  } else {
+    number2 = number2.slice(0, -1);
+    display.textContent = number2 || '0';
+  }
+}
 
 function handleAction(action) {
   if (/^\d+$/.test(Number(action))) {
